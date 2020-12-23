@@ -17,23 +17,25 @@ age = int(input('Введите возраст:'))
 print(f'Вам {age} лет, {name}.')
 print(separator)
 
-# 2. Пользователь вводит время в секундах. Переведите время в часы, минуты и секунды и выведите в формате чч:мм:сс. Используйте форматирование строк.
+# 2. Пользователь вводит время в секундах.
+#    Переведите время в часы, минуты и секунды и выведите в формате чч:мм:сс.
+#    Используйте форматирование строк.
 
 sec = int(input('Введите время в секундах:'))
 # version 1
-print(f'time 1 : {dt.timedelta(seconds = sec)}')
+print(f'чч:мм:сс : {dt.timedelta(seconds = sec)}')
 
 # version 2
 m, s = divmod(sec, 60)
 h, m = divmod(m, 60)
-print(f'time 2 : {h:02d}:{m:02d}:{s:02d}')
+print(f'чч:мм:сс : {h:02d}:{m:02d}:{s:02d}')
 
 # version 3
 m = sec // 60
 s = sec % 60
 h = m // 60
 m = m % 60
-print(f'time 3 : {h:02d}:{m:02d}:{s:02d}')
+print(f'чч:мм:сс : {h:02d}:{m:02d}:{s:02d}')
 print(separator)
 
 
