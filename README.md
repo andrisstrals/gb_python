@@ -1,1 +1,3 @@
-# gb_python
+# GeekBrains Python
+
+Course homeworks
