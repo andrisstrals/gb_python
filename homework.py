@@ -73,10 +73,13 @@ print(f'Прибыль: {earnings}')
 if earnings >= 0:
     print(f'Рентабельность выручки: {earnings / income}')
 
-employees = int(input('Введите численность сотрудников: '))
-print(f'Прибыль фирмы в расчете на одного сотрудника: {earnings / employees}')
-print(separator)
-
+    employees = int(input('Введите численность сотрудников: '))
+    print(f'Прибыль фирмы в расчете на одного сотрудника: {earnings / employees}')
+    print(separator)
+elif earnings < 0:
+    print('Одни убытки... {earnings}')
+else:
+    print('По нулям')
 
 # 6. Спортсмен занимается ежедневными пробежками. В первый день его результат составил a километров.
 #    Каждый день спортсмен увеличивал результат на 10 % относительно предыдущего.
