@@ -96,9 +96,11 @@ print(separ)
 #    Пользователь ввел число 1. Результат: 7, 5, 3, 3, 2, 1.
 #    Набор натуральных чисел можно задать непосредственно в коде, например, my_list = [7, 5, 3, 3, 2].
 
-my_list = [7, 5]
+
+ratings = [None, [7, 5, 3, 3, 2]]
+
 while True:
-    s = ' '.join(map(str, my_list))
+    s = ' '.join(map(str, ratings[1]))
     print(f'Рейтинг: {s}')
     n = input('Добавте новый елемент или "Q" для выхода: ')
 
@@ -106,8 +108,12 @@ while True:
         break
 
     elif n.isdigit():
-        my_list.append(int(n))
-        my_list.sort(reverse = True)
+        if ratings[0]:
+            ratings[1].remove(ratings[0])
+
+        ratings[0] = int(n)
+        ratings[1].append(int(n))
+        ratings[1].sort(reverse = True)
 
     else:
         print(f'Неудачный выбор, пробуйте ещё')
@@ -154,9 +160,11 @@ while True:
     else:
         print(f'Неудачный выбор, пробуйте ещё')
 
+print('\nТовары:')
 for g in goods:
     print(g)
 
+print('\nАналитика:')
 stats = {}
 for p in params:
     pp = p[0]
@@ -167,5 +175,5 @@ for p in params:
 
 for k, v in stats.items():
     print(f'{k} : {v}')
-    
+
 print(separ)
