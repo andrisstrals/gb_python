@@ -74,9 +74,9 @@ def my_pow2(x, y):
 def test_task_4():
     assert my_pow1(2, -2) == 0.25
     assert my_pow1(2, 2) == 4
-
     assert my_pow2(2, -2) == 0.25
     assert my_pow2(2, 2) == 4
+    print('All pass')
 
 # 5. Программа запрашивает у пользователя строку чисел, разделенных пробелом.
 #    При нажатии Enter должна выводиться сумма чисел. Пользователь может продолжить ввод чисел,
@@ -85,12 +85,57 @@ def test_task_4():
 #    программы завершается. Если специальный символ введен после нескольких чисел, то вначале
 #    нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу.
 
+def int_func():
+    total = 0
+    while True:
+        lst = input('Enter few numbers separated by spaces: ').strip().split()
+        for n in lst:
+            if n.isdigit():
+                total += int(n)
+            else:
+                print(f'Total: {total}')
+                return
+        print(f'Total: {total}')
+
+
+def test_task_5():
+    int_func()
+
+
 # 6. Реализовать функцию int_func(), принимающую слово из маленьких латинских букв и возвращающую его же,
 #    но с прописной первой буквой. Например, print(int_func(‘text’)) -> Text.
 #    Продолжить работу над заданием. В программу должна попадать строка из слов, разделенных пробелом.
 #    Каждое слово состоит из латинских букв в нижнем регистре. Сделать вывод исходной строки,
 #    но каждое слово должно начинаться с заглавной буквы.
 #    Необходимо использовать написанную ранее функцию int_func().
+
+# в принципе встроенний метод title() по моему удовлетворяет требования
+def str_func(text):
+    return text.title()
+
+# изобретаем велосипед :D
+def str_func1(text):
+    if len(text):
+        text = list(text)
+        text[0] = text[0].upper()
+        text = ''.join(text)
+    return text
+
+def test_sentence(sentence):
+    lst = sentence.split()
+    for i, w in enumerate(lst):
+        lst[i] = str_func1(w)
+    return ' '.join(lst)
+
+def test_task_6():
+    assert str_func('abcd') == 'Abcd'
+    assert str_func1('abcd') == 'Abcd'
+    assert str_func('hello world') == 'Hello World'
+    assert test_sentence('hello world') == 'Hello World'
+    print(str_func('hello world'))
+    print(test_sentence('hello world'))
+
+
 
 
 if __name__ == '__main__':
