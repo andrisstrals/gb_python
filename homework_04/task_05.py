@@ -7,5 +7,7 @@
 from functools import reduce
 
 lst = [el for el in range(100, 1001, 2)]
+print(lst)
+
 res = reduce(lambda a, b: a * b, lst)
 print(res)
