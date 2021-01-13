@@ -4,7 +4,11 @@
 
 
 from sys import argv
-_, hours, rate, bonus = argv
 
-salary = float(hours) * float(rate) + float(bonus)
-print(f'Salary: {salary}')
+if len(argv) != 4:
+    print('Use: task_01 hours rate bonus')
+else:
+    _, hours, rate, bonus = argv
+
+    salary = float(hours) * float(rate) + float(bonus)
+    print(f'Salary: {salary}')
