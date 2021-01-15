@@ -5,3 +5,21 @@
 # Пример файла:
 # Иванов 23543.12
 # Петров 13749.32
+
+
+rows = 0
+total = 0
+
+print('Under 20k:')
+
+with open('task3.txt') as file:
+    for line in file:
+        rows += 1
+        ll = line.split()
+        wages = float(ll[1])
+        if wages < 20000:
+            print(ll[0])
+        total += wages
+
+
+print(f'Average salary: {total / rows:0.2f}')
