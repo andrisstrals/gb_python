@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 *.tmp
+homework_05/task4rus_a.txt
+homework_05/task4rus_b.txt
