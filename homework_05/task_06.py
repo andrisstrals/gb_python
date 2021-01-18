@@ -6,3 +6,19 @@
 #                           Физика:   30(л)   —   10(лаб)
 #                      Физкультура:   —     30(пр)   —
 # Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
+
+from functools import reduce
+
+def justnum(txt):
+    nums = ''.join([c for c in txt if c.isdigit()])
+    return int(nums) if nums else 0
+
+result = {}
+
+with open('task6.txt') as f:
+    for line in f:
+        sp = line.split()
+        subj = sp[0][:-1]
+        result[subj] = reduce(lambda a, b: a+b, [justnum(n) for n in sp])
+
+print(result)
