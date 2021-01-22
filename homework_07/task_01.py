@@ -9,3 +9,45 @@
 # Подсказка: сложение элементов матриц выполнять поэлементно — первый элемент первой строки первой матрицы складываем с
 # первым элементом первой строки второй матрицы и т.д.
 
+from operator import add
+
+class Matrix:
+    def __init__(self, data):
+        # sanity check
+        for r in data:
+            assert len(r) == len(data[0])
+        self.__data = data
+
+    def __str__(self) -> str:
+        s = ''
+        for row in self.__data:
+            for el in row:
+                s += f'{el:4d}'
+            s += '\n'
+
+        return s.rstrip()
+
+    def __add__(self, other):
+        assert len(self.__data) == len(other.__data)
+
+        addrow = lambda a, b: [sum(i) for i in zip(a,b)]
+        return Matrix(list(map(addrow, self.__data, other.__data)))
+
+
+
+
+m1 = Matrix([[31, 22], [37, 43], [51, 86]])
+m2 = Matrix([[3,5,32], [2,4,6], [-1,64,-8]])
+m3 = Matrix([[3,5,8,3], [8,3,7,1]])
+
+print(m1)
+print('-------------')
+print(m2)
+print('-------------')
+print(m3)
+print('-------------')
+
+ma = Matrix([[1,2], [3,4]])
+mb = Matrix([[10,20], [30,40]])
+
+print(ma + mb)
