@@ -11,3 +11,40 @@
 # При вводе пользователем очередного элемента необходимо реализовать проверку типа элемента и
 # вносить его в список, только если введено число. Класс-исключение должен не позволить пользователю
 # ввести текст (не число) и отобразить соответствующее сообщение. При этом работа скрипта не должна завершаться.
+
+
+class ErrorNotANumber(Exception):
+    def __init__(self, num):
+        self.num = num
+
+    def __str__(self):
+        return f"{self.num} is not a number!"
+
+
+
+numberlist = []
+
+def addNumber(dest, num):
+    try:
+        dest.append(float(num))
+    except:
+        raise ErrorNotANumber(num)
+
+
+
+
+while True:
+    s = input('Enter a number or "stop" to finish: ')
+    if s.upper() == 'STOP':
+        break
+
+    try:
+        addNumber(numberlist, s)
+    except ErrorNotANumber as e:
+        print(f'ERROR: {e}')
+    except Exception as e:
+        print(f'Something went wrong: {e}')
+
+
+print(f'Resulting list of numbers: {numberlist}')
+
